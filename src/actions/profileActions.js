@@ -6,14 +6,15 @@ import {
 	CLEAR_CURRENT_PROFILE,
 	GET_ERRORS,
 	SET_CURRENT_USER,
-	GET_PROFILES
+	GET_PROFILES,
+	URL
 } from './types'
 
 export const getCurrentProfile = () => dispatch => {
 	dispatch(setProfileLoading())
 
 	axios
-		.get('/api/profile')
+		.get(`${URL}/profile`)
 		.then(res => {
 			dispatch({
 				type: GET_PROFILE,
@@ -32,7 +33,7 @@ export const getProfileByHandle = (handle) => dispatch => {
 	dispatch(setProfileLoading())
 
 	axios
-		.get(`/api/profile/handle/${handle}`)
+		.get(`${URL}/profile/handle/${handle}`)
 		.then(res => {
 			dispatch({
 				type: GET_PROFILE,
@@ -51,7 +52,7 @@ export const getProfiles = () => dispatch => {
 	dispatch(setProfileLoading())
 
 	axios
-		.get('/api/profile/all')
+		.get(`${URL}/profile/all`)
 		.then(res => {
 			dispatch({
 				type: GET_PROFILES,
@@ -70,7 +71,7 @@ export const createProfile = (profileData, history) => dispatch => {
 	dispatch(setProfileLoading())
 
 	axios
-		.post('/api/profile', profileData)
+		.post(`${URL}/profile`, profileData)
 		.then(res => history.push('/dashboard'))
 		.catch(err =>
 			dispatch({
@@ -82,7 +83,7 @@ export const createProfile = (profileData, history) => dispatch => {
 
 export const addExperience = (data, history) => dispatch => {
 	axios
-		.post('/api/profile/experience', data)
+		.post(`${URL}/profile/experience`, data)
 		.then(res => {
 			history.push('/dashboard')
 		})
@@ -96,7 +97,7 @@ export const addExperience = (data, history) => dispatch => {
 
 export const addEducation = (data, history) => dispatch => {
 	axios
-		.post('/api/profile/education', data)
+		.post(`${URL}/profile/education`, data)
 		.then(res => {
 			history.push('/dashboard')
 		})
@@ -111,7 +112,7 @@ export const addEducation = (data, history) => dispatch => {
 export const deleteExperience = id => dispatch => {
 	if (window.confirm('Delete this Experience? This cannot be Reversed')) {
 		axios
-			.delete(`/api/profile/experience/${id}`)
+			.delete(`${URL}/profile/experience/${id}`)
 			.then(res => {
 				dispatch({
 					type: GET_PROFILE,
@@ -130,7 +131,7 @@ export const deleteExperience = id => dispatch => {
 export const deleteEducation = id => dispatch => {
 	if (window.confirm('Delete this Education? This cannot be Reversed')) {
 		axios
-			.delete(`/api/profile/education/${id}`)
+			.delete(`${URL}/profile/education/${id}`)
 			.then(res => {
 				dispatch({
 					type: GET_PROFILE,
@@ -149,7 +150,7 @@ export const deleteEducation = id => dispatch => {
 export const deleteAccount = () => dispatch => {
 	if (window.confirm('Delete Account? This cannot be Reversed')) {
 		axios
-			.delete('/api/profile')
+			.delete(`${URL}/profile`)
 			.then(res => {
 				dispatch({
 					type: SET_CURRENT_USER,

@@ -6,14 +6,15 @@ import {
 	POST_LOADING,
 	DELETE_POST,
 	LIKE_CHANGED,
-	GET_POST
+	GET_POST,
+	URL
 } from './types'
 
 export const addPost = postData => dispatch => {
 	// dispatch(setPostLoading())
 
 	axios
-		.post('/api/posts', postData)
+		.post(`${URL}/posts`, postData)
 		.then(res => {
 			dispatch({
 				type: ADD_POST,
@@ -32,7 +33,7 @@ export const getPosts = () => dispatch => {
 	dispatch(setPostLoading())
 
 	axios
-		.get('/api/posts')
+		.get(`${URL}/posts`)
 		.then(res => {
 			dispatch({
 				type: GET_POSTS,
@@ -50,7 +51,7 @@ export const getPost = id => dispatch => {
 	dispatch(setPostLoading())
 
 	axios
-		.get(`/api/posts/${id}`)
+		.get(`${URL}/posts/${id}`)
 		.then(res => {
 			dispatch({
 				type: GET_POST,
@@ -68,7 +69,7 @@ export const getPost = id => dispatch => {
 export const deletePost = id => dispatch => {
 	if (window.confirm('Delete your Post? This cannot be Reversed')) {
 		axios
-			.delete(`/api/posts/${id}`)
+			.delete(`${URL}/posts/${id}`)
 			.then(res => {
 				dispatch({
 					type: DELETE_POST,
@@ -86,7 +87,7 @@ export const deletePost = id => dispatch => {
 
 export const addLike = id => dispatch => {
 	axios
-		.post(`/api/posts/like/${id}`)
+		.post(`${URL}/posts/like/${id}`)
 		.then(res => {
 			dispatch({
 				type: LIKE_CHANGED,
@@ -103,7 +104,7 @@ export const addLike = id => dispatch => {
 
 export const removeLike = id => dispatch => {
 	axios
-		.post(`/api/posts/unlike/${id}`)
+		.post(`${URL}/posts/unlike/${id}`)
 		.then(res => {
 			dispatch({
 				type: LIKE_CHANGED,
@@ -120,7 +121,7 @@ export const removeLike = id => dispatch => {
 
 export const addComment = (postId, commentData) => dispatch => {
 	axios
-		.post(`/api/posts/comment/${postId}`, commentData)
+		.post(`${URL}/posts/comment/${postId}`, commentData)
 		.then(res => {
 			dispatch({
 				type: GET_POST,
@@ -138,7 +139,7 @@ export const addComment = (postId, commentData) => dispatch => {
 export const deleteComment = (postId, commentId) => dispatch => {
 	if (window.confirm('Delete your Comment? This cannot be Reversed')) {
 		axios
-			.delete(`/api/posts/comment/${postId}/${commentId}`)
+			.delete(`${URL}/posts/comment/${postId}/${commentId}`)
 			.then(res => {
 				dispatch({
 					type: GET_POST,
