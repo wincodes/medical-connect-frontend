@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { loginUser } from '../../actions/authActions'
 import Loading from '../Loading'
 import TextFieldGroup from '../common/TextFieldGroup'
+import image from '../../img/Young-Male-Doctor.svg'
 
 class Login extends Component {
 	constructor() {
@@ -57,10 +58,10 @@ class Login extends Component {
 			<div className='login'>
 				<div className='container'>
 					<div className='row'>
-						<div className='col-md-8 m-auto'>
+						<div className='col-md-7 col-sm-12 m-auto'>
 							{loading && <Loading />}
-							<h1 className='display-4 text-center'>Log In</h1>
-							<p className='lead text-center'>
+							<h2 className='text-center'>Log In</h2>
+							<p className='text-center'>
 								Sign in to your Medical Connect account
 							</p>
 							<form onSubmit={this.onSubmit}>
@@ -72,7 +73,7 @@ class Login extends Component {
 									onChange={this.onChange}
 									error={errors.email}
 								/>
-								
+
 								<TextFieldGroup
 									type='password'
 									placeholder='password'
@@ -81,9 +82,12 @@ class Login extends Component {
 									onChange={this.onChange}
 									error={errors.password}
 								/>
-								
+
 								<input type='submit' className='btn btn-info btn-block mt-4' />
 							</form>
+						</div>
+						<div className='col-md-5 d-none d-md-block'>
+							<img src={image} className='img-fluid svg-img' alt="" />
 						</div>
 					</div>
 				</div>

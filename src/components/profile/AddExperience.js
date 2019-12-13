@@ -26,32 +26,32 @@ class AddExperience extends Component {
 		this.onSubmit = this.onSubmit.bind(this)
 		this.onChange = this.onChange.bind(this)
 		this.onCheck = this.onCheck.bind(this)
-  }
-  
-  componentWillReceiveProps(nextProps){
-    if(nextProps.errors){
-      this.setState({
-        errors: nextProps.errors,
-        loading: false
-      })
-    }
-  }
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.errors) {
+			this.setState({
+				errors: nextProps.errors,
+				loading: false
+			})
+		}
+	}
 
 	onSubmit(e) {
 		e.preventDefault()
 		this.setState({ loading: true })
-    
-    const data = {
-      title: this.state.title,
+
+		const data = {
+			title: this.state.title,
 			organization: this.state.organization,
 			location: this.state.location,
 			from: this.state.from,
 			to: this.state.to,
 			current: this.state.current,
 			description: this.state.description
-    }
+		}
 
-    this.props.addExperience(data, this.props.history)
+		this.props.addExperience(data, this.props.history)
 	}
 
 	onChange(e) {
@@ -120,16 +120,6 @@ class AddExperience extends Component {
 									error={errors.from}
 								/>
 
-								<h6>End Date:</h6>
-								<TextFieldGroup
-									value={this.state.to}
-									name='to'
-									type='date'
-									onChange={this.onChange}
-									error={errors.to}
-									disabled={this.state.disabled ? 'disabled' : ''}
-								/>
-
 								<div className='form-check mb-4'>
 									<input
 										type='checkbox'
@@ -144,6 +134,16 @@ class AddExperience extends Component {
 										Still Working Here?
 									</label>
 								</div>
+
+								<h6>End Date:</h6>
+								<TextFieldGroup
+									value={this.state.to}
+									name='to'
+									type='date'
+									onChange={this.onChange}
+									error={errors.to}
+									disabled={this.state.disabled ? 'disabled' : ''}
+								/>
 
 								<input
 									type='submit'

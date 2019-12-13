@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import ProfileActions from './ProfileActions'
 import Experience from './Experience'
 import Education from './Education'
+import image from '../../img/Nurse_Practise.svg'
 
 class Dashboard extends Component {
 	constructor() {
@@ -39,7 +40,11 @@ class Dashboard extends Component {
 				dashboardContent = (
 					<div>
 						<p className='text-muted'>
-							Hi, <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+							Hi, {user.name}{' '}
+							<Link to={`/profile/${profile.handle}`} className='btn btn-light'>
+								<i className='fas fa-user-circle text-info mr-1'></i> View Your
+								Profile
+							</Link>
 						</p>
 						<ProfileActions />
 						<Experience experience={profile.experience} />
@@ -72,10 +77,14 @@ class Dashboard extends Component {
 			<div className='dashboard'>
 				<div className='container'>
 					<div className='row'>
-						<div className='col-md-12'>
+						<div className='col-md-7 col-sm-12 pt-4'>
 							{this.state.loading && <Loading />}
-							<h1 className='display-4'>Dashboard</h1>
+							<h4 className='mb-2'>Dashboard</h4>
 							{dashboardContent}
+						</div>
+
+						<div className='col-md-5 d-none d-md-block'>
+							<img src={image} className="img-fluid svg-img" alt="" />
 						</div>
 					</div>
 				</div>

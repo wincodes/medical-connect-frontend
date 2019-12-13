@@ -14,16 +14,32 @@ class Navbar extends Component {
 		const { isAuthenticated, user } = this.props.auth
 
 		const authLinks = (
-			<ul className='navbar-nav ml-auto'>
+			<ul className='nav'>
+				<Link className='nav-link' to='/dashboard'>
 				<li className='nav-item'>
-					<Link className='nav-link' to='/dashboard'>
-						Dashboard
+					<img
+						src={user.avatar}
+						alt={user.name}
+						style={{ width: '25px', marginRight: '5px' }}
+						className='rounded-circle d-none d-md-block'
+						title={user.name}
+					/>
+				</li>
+				</Link>
+				<Link className='nav-link' to='/dashboard'>
+					<li className='nav-item'>{user.name}</li>
+				</Link>
+
+				<li className='nav-item'>
+					<Link className='nav-link' to='/feed'>
+						Q & A
 					</Link>
 				</li>
 
 				<li className='nav-item'>
-					<Link className='nav-link' to='/feed'>
-						Post Feed
+					<Link className='nav-link' to='/profiles'>
+						{' '}
+						Professionals
 					</Link>
 				</li>
 
@@ -33,13 +49,6 @@ class Navbar extends Component {
 						className='nav-link'
 						style={{ cursor: 'pointer' }}
 					>
-						<img
-							src={user.avatar}
-							alt={user.name}
-							style={{ width: '25px', marginRight: '5px' }}
-							className='rounded-circle'
-							title='You must have a gravatar form image'
-						/>{' '}
 						Log Out
 					</div>
 				</li>
@@ -47,7 +56,7 @@ class Navbar extends Component {
 		)
 
 		const guestLinks = (
-			<ul className='navbar-nav ml-auto'>
+			<ul className='nav'>
 				<li className='nav-item'>
 					<Link className='nav-link' to='/register'>
 						Sign Up
@@ -67,26 +76,7 @@ class Navbar extends Component {
 					<Link className='navbar-brand' to='/'>
 						Medical Connect
 					</Link>
-					<button
-						className='navbar-toggler'
-						type='button'
-						data-toggle='collapse'
-						data-target='#mobile-nav'
-					>
-						<span className='navbar-toggler-icon'></span>
-					</button>
-
-					<div className='collapse navbar-collapse' id='mobile-nav'>
-						<ul className='navbar-nav mr-auto'>
-							<li className='nav-item'>
-								<Link className='nav-link' to='/profiles'>
-									{' '}
-									Professionals
-								</Link>
-							</li>
-						</ul>
-						{isAuthenticated ? authLinks : guestLinks}
-					</div>
+					{isAuthenticated ? authLinks : guestLinks}
 				</div>
 			</nav>
 		)

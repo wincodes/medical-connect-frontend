@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import Loading from '../Loading'
 import TextFieldGroup from '../common/TextFieldGroup'
+import image from '../../img/Young-Female-Doctor.svg'
 
 class Register extends Component {
 	constructor() {
@@ -60,10 +61,10 @@ class Register extends Component {
 			<div className='register'>
 				<div className='container'>
 					<div className='row'>
-						<div className='col-md-8 m-auto'>
+						<div className='col-md-7 col-sm-12 m-auto'>
 							{loading && <Loading />}
-							<h1 className='display-4 text-center'>Sign Up</h1>
-							<p className='lead text-center'>
+							<h2 className='text-center'>Sign Up</h2>
+							<p className='text-center'>
 								Create your Medical Connect Account
 							</p>
 							<form noValidate onSubmit={this.onSubmit}>
@@ -106,6 +107,9 @@ class Register extends Component {
 								 
 								<input type='submit' className='btn btn-info btn-block mt-4' />
 							</form>
+						</div>
+						<div className='col-md-5 d-none d-md-block'>
+							<img src={image} className="img-fluid svg-img" alt="" />
 						</div>
 					</div>
 				</div>

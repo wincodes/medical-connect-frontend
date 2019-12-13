@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import Loading from '../Loading'
 import Header from './ProfileViews/Header'
 import About from './ProfileViews/About'
@@ -23,14 +22,6 @@ class Profile extends Component {
 		} else {
 			ProfileContent = (
 				<div>
-					<div className='row'>
-						<div className='col-md-6'>
-							<Link to='/profiles' className='btn btn-light mb-3 float-left'>
-								Back to Profiles
-							</Link>
-						</div>
-						<div className='col-md-6'></div>
-					</div>
 					<Header profile={profile} />
 					<About profile={profile} />
 					<Credentials profile={profile} />

@@ -29,7 +29,7 @@ class Profiles extends Component {
 				<div className='container'>
 					<div className='row'>
 						<div className='col-md-8 m-auto'>
-							<p className='lead text-center'>Medical Professionals</p>
+							<h3 className='text-center pb-4'>Medical Professionals</h3>
 							{profileItems}
 						</div>
 					</div>

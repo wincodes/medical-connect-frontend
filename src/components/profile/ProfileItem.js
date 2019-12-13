@@ -13,7 +13,7 @@ class ProfileItem extends Component {
 						<img src={profile.user.avatar} alt='' className='rounded-circle' />
 					</div>
 					<div className='col-8'>
-						<h3>{profile.user.name}</h3>
+						<h4>{profile.user.name}</h4>
 						<p>
 							{profile.status}{' '}
 							{isEmpty(profile.workPlace) ? null : (
